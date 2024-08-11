@@ -45,37 +45,8 @@ Contributions are welcome! Please feel free to submit a Pull Request.
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-```
 
 
-
-
-
-```
-
-
-## scripts/start_benchmark.sh
-
-```bash
-#!/bin/bash
-
-# Source environment variables
-source scripts/setup_env.sh
-
-# Prompt for RELEASE if not set
-if [ -z "$RELEASE" ]; then
-    read -p "Enter RELEASE (master/main or prometheus release, e.g., v2.3.0): " RELEASE
-    export RELEASE
-fi
-
-# Deploy the k8s objects for benchmarking
-../infra/infra kind resource apply -v CLUSTER_NAME:$CLUSTER_NAME \
-    -v PR_NUMBER:$PR_NUMBER -v RELEASE:$RELEASE -v DOMAIN_NAME:$DOMAIN_NAME \
-    -v GITHUB_ORG:${GITHUB_ORG} -v GITHUB_REPO:${GITHUB_REPO} \
-    -f manifests/prombench/benchmark
-
-echo "Benchmark started successfully."
-```
 
 This tutorial and repository structure provides a comprehensive guide to setting up and running Prombench in KIND. The scripts automate most of the process, making it easier for users to get started. The documentation explains each step and provides troubleshooting guidance.
 
